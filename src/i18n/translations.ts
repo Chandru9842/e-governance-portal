@@ -19,6 +19,7 @@ export const translations: Record<Language, Record<string, string>> = {
     navSubsidyLoan: 'Subsidy & Loan',
     navGrievances: 'Complaints / Grievance',
     navProfile: 'My Profile',
+    navAdmin: 'Admin / Officer Desk',
     navLogout: 'Logout',
 
     // Common UI
@@ -74,6 +75,7 @@ export const translations: Record<Language, Record<string, string>> = {
     navSubsidyLoan: 'மானியம் மற்றும் கடன்',
     navGrievances: 'புகார்கள் / குறைதீர்ப்பு',
     navProfile: 'எனது சுயவிவரம்',
+    navAdmin: 'நிர்வாகம் / அதிகாரி பலகை',
     navLogout: 'வெளியேறு',
 
     // Common UI

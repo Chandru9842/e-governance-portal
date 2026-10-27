@@ -58,31 +58,36 @@ interface StatCardProps {
   icon: React.ReactNode;
   accentColor: 'green' | 'purple' | 'orange' | 'blue';
   onClick?: () => void;
+  viewLabel?: string;
 }
 
 const ACCENT_STYLES: Record<
   StatCardProps['accentColor'],
-  { iconBg: string; iconText: string; subtextColor: string }
+  { iconBg: string; iconText: string; subtextColor: string; linkText: string }
 > = {
   green: {
     iconBg: 'bg-[#0B4D2E]/10',
     iconText: 'text-[#0B4D2E]',
     subtextColor: 'text-[#1E8E4F]',
+    linkText: 'text-[#0B4D2E] hover:text-[#1E8E4F]',
   },
   purple: {
     iconBg: 'bg-purple-100',
     iconText: 'text-purple-700',
     subtextColor: 'text-purple-700',
+    linkText: 'text-purple-700 hover:text-purple-900',
   },
   orange: {
     iconBg: 'bg-orange-100',
     iconText: 'text-orange-700',
     subtextColor: 'text-orange-700',
+    linkText: 'text-orange-700 hover:text-orange-900',
   },
   blue: {
     iconBg: 'bg-sky-100',
     iconText: 'text-sky-700',
     subtextColor: 'text-sky-700',
+    linkText: 'text-sky-700 hover:text-sky-900',
   },
 };
 
@@ -93,6 +98,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   icon,
   accentColor,
   onClick,
+  viewLabel = 'View',
 }) => {
   const style = ACCENT_STYLES[accentColor];
   return (
@@ -110,23 +116,36 @@ export const StatCard: React.FC<StatCardProps> = ({
             }
           : undefined
       }
-      className={`bg-white rounded-xl border border-slate-200/80 p-5 shadow-xs flex items-start justify-between gap-4 transition-all ${
+      className={`bg-white rounded-xl border border-slate-200/80 p-5 shadow-xs flex flex-col justify-between gap-3 transition-all ${
         onClick
           ? 'cursor-pointer hover:border-[#1E8E4F]/50 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-[#0B4D2E]'
           : ''
       }`}
     >
-      <div className="min-w-0 flex-1">
-        <p className="text-xs font-medium text-slate-500 truncate">{label}</p>
-        <p className="text-2xl font-bold text-slate-900 mt-1.5 tabular-nums tracking-tight">
-          {value}
-        </p>
-        <p className={`text-xs font-medium mt-2 truncate ${style.subtextColor}`}>{subtext}</p>
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-medium text-slate-500 truncate">{label}</p>
+          <p className="text-2xl font-bold text-slate-900 mt-1.5 tabular-nums tracking-tight">
+            {value}
+          </p>
+        </div>
+        <div
+          className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${style.iconBg} ${style.iconText}`}
+        >
+          {icon}
+        </div>
       </div>
-      <div
-        className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${style.iconBg} ${style.iconText}`}
-      >
-        {icon}
+
+      <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100">
+        <p className={`text-xs font-medium truncate ${style.subtextColor}`}>{subtext}</p>
+        {onClick && (
+          <span
+            className={`inline-flex items-center gap-1 text-xs font-semibold shrink-0 ${style.linkText}`}
+          >
+            <span>{viewLabel}</span>
+            <span aria-hidden="true">→</span>
+          </span>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import { WeatherPage } from './pages/WeatherPage';
 import { SubsidyLoanPage } from './pages/SubsidyLoanPage';
 import { GrievancesPage } from './pages/GrievancesPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { AdminDashboardPage } from './pages/AdminDashboardPage';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/subsidy-loan" element={<SubsidyLoanPage />} />
             <Route path="/grievances" element={<GrievancesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/admin" element={<AdminDashboardPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AppShell>
