@@ -1,0 +1,6 @@
+{
+  "name": "Digital Farmer e-Governance Portal",
+  "description": "Comprehensive e-Governance agricultural portal for Tamil Nadu farmers featuring crop management, government schemes, live mandi market prices, weather intelligence, subsidies, loans, and grievance redressal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
